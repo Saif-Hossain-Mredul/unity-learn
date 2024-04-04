@@ -5,12 +5,14 @@ using UnityEngine;
 public class RoadController : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float length, width;
+    private float length,
+        width;
 
-    void Start() { 
+    void Start()
+    {
         Vector3 size = gameObject.GetComponent<BoxCollider>().size;
         length = size.x * 20;
-        width = size.z + 3;
+        width = size.z * 3;
     }
 
     // Update is called once per frame
@@ -20,14 +22,14 @@ public class RoadController : MonoBehaviour
         DestroyOutOfBound();
     }
 
-    void MoveRoad()
+    private void MoveRoad()
     {
-        gameObject.transform.Translate(Vector3.left * 10 * Time.deltaTime);
+        gameObject.transform.Translate(Vector3.back * 10 * Time.deltaTime);
     }
 
-    void DestroyOutOfBound()
+    private void DestroyOutOfBound()
     {
-        if (gameObject.transform.position.x < -150)
+        if (gameObject.transform.position.z < -150)
         {
             Destroy(gameObject);
         }
