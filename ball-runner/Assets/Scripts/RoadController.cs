@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoadController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public float roadSpeed = 50;
     private float length,
         width;
 
@@ -24,7 +25,7 @@ public class RoadController : MonoBehaviour
 
     private void MoveRoad()
     {
-        gameObject.transform.Translate(Vector3.back * 10 * Time.deltaTime);
+        gameObject.transform.Translate(Vector3.back * roadSpeed * Time.deltaTime);
     }
 
     private void DestroyOutOfBound()

@@ -22,7 +22,7 @@ public class SpawnRoad : MonoBehaviour
     {
         previousRoadObjects = GameObject.FindGameObjectsWithTag("Road");
 
-        if (previousRoadObjects[0].transform.position.z < 80 && previousRoadObjects.Length < 2)
+        if (previousRoadObjects[0].transform.position.z < 100 && previousRoadObjects.Length < 2)
         {
             Spawn();
         }
@@ -31,7 +31,7 @@ public class SpawnRoad : MonoBehaviour
     private void Spawn()
     {
         Vector3 spawnPosition = previousRoadObjects[0].transform.position;
-        spawnPosition.z = length + spawnPosition.z - 2;
+        spawnPosition.z = length + spawnPosition.z -1;
 
         Instantiate(roadObject, spawnPosition, previousRoadObjects[0].transform.rotation);
     }
