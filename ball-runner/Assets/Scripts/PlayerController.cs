@@ -26,8 +26,6 @@ public class Player : MonoBehaviour
         RotateThePlayerBall();
         MovePlayerHorizontally();
         JumpPlayer();
-
-        Debug.Log(isOnRoad);
     }
 
     void RotateThePlayerBall()

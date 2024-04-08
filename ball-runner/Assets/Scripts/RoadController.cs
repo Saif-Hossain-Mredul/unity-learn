@@ -20,19 +20,10 @@ public class RoadController : MonoBehaviour
     void Update()
     {
         MoveRoad();
-        DestroyOutOfBound();
     }
 
     private void MoveRoad()
     {
         gameObject.transform.Translate(Vector3.back * roadSpeed * Time.deltaTime);
-    }
-
-    private void DestroyOutOfBound()
-    {
-        if (gameObject.transform.position.z < -150)
-        {
-            Destroy(gameObject);
-        }
     }
 }
