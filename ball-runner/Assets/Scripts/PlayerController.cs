@@ -13,12 +13,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RotateThePlayerBall();
+
+        MovePlayerHorizontally();
+    }
+
+    void RotateThePlayerBall()
+    {
         gameObject.transform.RotateAround(
             transform.position,
             Vector3.right,
             rotationSpeed * Time.deltaTime
         );
+    }
 
+    void MovePlayerHorizontally()
+    {
         Vector3 playerPosition = transform.position;
 
         if (Input.GetKeyDown(KeyCode.RightArrow) && playerPosition.x < limitX)
