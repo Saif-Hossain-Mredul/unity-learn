@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6964191488328370834}
   - component: {fileID: 2607686547052018521}
   - component: {fileID: 8902454147897229264}
+  - component: {fileID: 5748977829724930408}
   m_Layer: 0
   m_Name: Bar
   m_TagString: Bar
@@ -140,3 +141,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecaa33dc44d0e0e49bbc20315c0a0661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5748977829724930408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961086474332822667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f818a1184059c47b6df71400f4e439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadSpeed: 50

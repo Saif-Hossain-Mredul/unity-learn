@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1904263951784441987}
   - component: {fileID: 3661385724895215632}
   - component: {fileID: 1072517165909298321}
-  - component: {fileID: 6727494663348197179}
   - component: {fileID: 296028742566049340}
   - component: {fileID: 463426397229727858}
+  - component: {fileID: 2826565847925575797}
   m_Layer: 0
   m_Name: Road
   m_TagString: Road
@@ -109,19 +109,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &6727494663348197179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8565401857616571587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfafda2d2a8644c4b9bfc69764551e59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roadSpeed: 50
 --- !u!65 &296028742566049340
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,3 +142,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecaa33dc44d0e0e49bbc20315c0a0661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2826565847925575797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8565401857616571587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f818a1184059c47b6df71400f4e439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadSpeed: 50
