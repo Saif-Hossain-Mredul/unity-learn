@@ -6,6 +6,8 @@ public class SpawnRoad : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject roadObject;
+    public GameObject block;
+
     private GameObject[] previousRoadObjects;
     private float length,
         width;
@@ -15,6 +17,8 @@ public class SpawnRoad : MonoBehaviour
         Vector3 size = roadObject.GetComponent<BoxCollider>().size;
         length = size.z * 20;
         width = size.x * 3;
+
+        Debug.Log(size);
     }
 
     // Update is called once per frame
@@ -31,8 +35,14 @@ public class SpawnRoad : MonoBehaviour
     private void Spawn()
     {
         Vector3 spawnPosition = previousRoadObjects[0].transform.position;
-        spawnPosition.z = length + spawnPosition.z -1;
+        spawnPosition.z = length + spawnPosition.z - 2;
 
-        Instantiate(roadObject, spawnPosition, previousRoadObjects[0].transform.rotation);
+        GameObject road = Instantiate(
+            roadObject,
+            spawnPosition,
+            previousRoadObjects[0].transform.rotation
+        );
+
+        gameObject.GetComponent<SpawnObstacle>().SpawnBars();
     }
 }

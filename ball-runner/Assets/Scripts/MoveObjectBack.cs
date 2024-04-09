@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveObjectBack : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float roadSpeed = 50;
+    private float roadSpeed = 20;
 
     void Start() { }
 

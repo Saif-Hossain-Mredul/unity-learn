@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody playerRb;
     private BoxCollider playerCollider;
-    private float forceImpulseValue = 12;
+    private float forceImpulseValue = 10;
     private bool isOnRoad;
 
     void Start()
