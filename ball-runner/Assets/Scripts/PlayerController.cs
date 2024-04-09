@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit(Collision other)
     {
-        if (other.gameObject.tag == "Road")
+        if (other.gameObject.tag == "Road" || other.gameObject.tag == "Block")
         {
             isOnRoad = false;
         }
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Road")
+        if (other.gameObject.tag == "Road" || other.gameObject.tag == "Block")
         {
             isOnRoad = true;
         }
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        if (other.gameObject.tag == "Road")
+        if (other.gameObject.tag == "Road" || other.gameObject.tag == "Block")
         {
             isOnRoad = true;
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnRoad : MonoBehaviour
@@ -26,16 +27,19 @@ public class SpawnRoad : MonoBehaviour
     {
         previousRoadObjects = GameObject.FindGameObjectsWithTag("Road");
 
-        if (previousRoadObjects[0].transform.position.z < 100 && previousRoadObjects.Length < 2)
+        if (previousRoadObjects[0].transform.position.z < 100 && previousRoadObjects.Length < 6)
         {
-            Spawn();
+            Spawn(-1);
+            Spawn(0);
+            Spawn(1);
         }
     }
 
-    private void Spawn()
+    private void Spawn(int spawnSide)
     {
-        Vector3 spawnPosition = previousRoadObjects[0].transform.position;
+        Vector3 spawnPosition = previousRoadObjects.Last().transform.position;
         spawnPosition.z = length + spawnPosition.z - 2;
+        spawnPosition.x = spawnSide * 10;
 
         GameObject road = Instantiate(
             roadObject,
@@ -43,6 +47,6 @@ public class SpawnRoad : MonoBehaviour
             previousRoadObjects[0].transform.rotation
         );
 
-        gameObject.GetComponent<SpawnObstacle>().SpawnBars();
+        gameObject.GetComponent<SpawnObstacle>().SpawnObstacles(spawnSide);
     }
 }

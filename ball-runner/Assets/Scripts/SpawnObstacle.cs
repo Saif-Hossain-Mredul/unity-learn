@@ -23,21 +23,36 @@ public class SpawnObstacle : MonoBehaviour
             length = 0;
     }
 
-    public void SpawnBars()
+    public void SpawnObstacles(int spawnSide)
     {
-        for (int i = 0; i < 5; i++)
+        while (200 - length > 40)
         {
+            GameObject obstacle = obstacles[Random.Range(0, 2)];
+
             int distance = Random.Range(40, 45);
 
             length += distance;
+            Vector3 spawnPos;
 
-            Vector3 spawnPos = new Vector3(
-                Random.Range(-1, 2) * 10,
-                Random.Range(2, 6),
-                length + roadStartPos
-            );
+            if (obstacle.CompareTag("Bar"))
+            {
+                spawnPos = new Vector3(spawnSide * 10, Random.Range(2, 6), length + roadStartPos);
 
-            Instantiate(obstacles[1], spawnPos, obstacles[1].transform.rotation);
+                Instantiate(obstacle, spawnPos, obstacle.transform.rotation);
+            }
+            else if (obstacle.CompareTag("Block"))
+            {
+                spawnPos = new Vector3(
+                    spawnSide * 10,
+                    obstacle.transform.position.y,
+                    length + roadStartPos
+                );
+                Instantiate(obstacle, spawnPos, obstacle.transform.rotation);
+
+                length += 40;
+            }
         }
+
+        length = 0;
     }
 }
