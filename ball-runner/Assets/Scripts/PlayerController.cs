@@ -1,31 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
     public float rotationSpeed = 700;
     public float limitX = 8;
+    public TextMeshProUGUI gameOverText;
+    public MoveObjectBack moveBack;
 
     private Rigidbody playerRb;
     private BoxCollider playerCollider;
     private float forceImpulseValue = 10;
     private bool isOnRoad;
+    private bool gameOver;
 
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<BoxCollider>();
         isOnRoad = true;
+        gameOver = false;
+        gameOverText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        RotateThePlayerBall();
-        MovePlayerHorizontally();
-        JumpPlayer();
+        if (!gameOver)
+        {
+            RotateThePlayerBall();
+            MovePlayerHorizontally();
+            JumpPlayer();
+        }
+        GameOverShow();
+    }
+
+    private void GameOverShow()
+    {
+        if (gameOver)
+        {
+            gameOverText.gameObject.SetActive(true);
+            moveBack.StopMovement();
+        }
     }
 
     void RotateThePlayerBall()
@@ -59,6 +80,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public bool GameOver
+    {
+        get { return gameOver; }
+    }
+
     private void OnCollisionExit(Collision other)
     {
         if (other.gameObject.tag == "Road" || other.gameObject.tag == "Block")
@@ -72,6 +98,23 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Road" || other.gameObject.tag == "Block")
         {
             isOnRoad = true;
+        }
+
+        if (other.gameObject.CompareTag("Block"))
+        {
+            Vector3 contactPoint = other.GetContact(0).point;
+
+            if (contactPoint.y < 3)
+            {
+                Debug.Log("Collided on the front");
+                gameOver = true;
+            }
+        }
+
+        if (other.gameObject.CompareTag("Bar"))
+        {
+            Debug.Log("Collided with bar");
+            gameOver = true;
         }
     }
 

@@ -6,8 +6,12 @@ public class MoveObjectBack : MonoBehaviour
 {
     // Start is called before the first frame update
     private float roadSpeed = 20;
+    private bool gameOver;
 
-    void Start() { }
+    void Start()
+    {
+        gameOver = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -17,6 +21,14 @@ public class MoveObjectBack : MonoBehaviour
 
     private void MoveBack()
     {
-        gameObject.transform.Translate(Vector3.back * roadSpeed * Time.deltaTime);
+        if (!gameOver)
+        {
+            gameObject.transform.Translate(Vector3.back * roadSpeed * Time.deltaTime);
+        }
+    }
+
+    public void StopMovement()
+    {
+        gameOver = true;
     }
 }
