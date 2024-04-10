@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     private float forceImpulseValue = 10;
     private bool isOnRoad;
     private bool gameOver;
+    private bool moving = false;
+    private Vector3 endPos;
 
     void Start()
     {
@@ -64,11 +66,29 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.RightArrow) && playerPosition.x < limitX && isOnRoad)
         {
-            gameObject.transform.Translate(Vector3.right * limitX);
+            endPos = playerPosition;
+            endPos.x += (1 * limitX);
+            moving = true;
+
+            // gameObject.transform.Translate(Vector3.right * limitX);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && playerPosition.x > -limitX && isOnRoad)
         {
-            gameObject.transform.Translate(Vector3.left * limitX);
+            endPos = playerPosition;
+            endPos.x -= (1 * limitX);
+            moving = true;
+
+            // gameObject.transform.Translate(Vector3.left * limitX);
+        }
+
+        if (moving)
+        {
+            transform.position = Vector3.MoveTowards(playerPosition, endPos, 20 * Time.deltaTime);
+
+            if (transform.position == endPos)
+            {
+                moving = false;
+            }
         }
     }
 
