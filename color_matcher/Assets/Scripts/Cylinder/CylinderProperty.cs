@@ -7,16 +7,17 @@ public class CylinderProperty : MonoBehaviour
     // Start is called before the first frame update
     public Material[] cylinderMaterials;
 
+    private Vector3 cylinderScale;
+
     void Start()
     {
         gameObject.GetComponent<Renderer>().material = cylinderMaterials[
             Random.Range(0, cylinderMaterials.Length)
         ];
+
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        transform.localScale = new Vector3(1, Random.Range(5, 12), 1);
-    }
+    void Update() { }
 }
