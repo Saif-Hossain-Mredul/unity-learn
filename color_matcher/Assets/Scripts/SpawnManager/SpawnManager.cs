@@ -7,12 +7,15 @@ public class SpawnManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject cylinder;
+    public GameObject player;
 
     Vector3 lastCylinderPosition,
         newCylinderPosition,
         cylinderScale;
 
-    void Start() { }
+    void Start() { 
+        Instantiate(player, new Vector3(-4, 1, 0), player.transform.rotation);
+    }
 
     // Update is called once per frame
     void Update()
@@ -31,16 +34,6 @@ public class SpawnManager : MonoBehaviour
                 lastCylinderPosition
                 + new Vector3(0, 0, lastCylinderLength / 2)
                 + new Vector3(0, 0, newCylinderLength);
-
-            Debug.Log(
-                lastCylinder.transform.localScale.y
-                    + "   "
-                    + lastCylinderPosition
-                    + " "
-                    + newCylinderPosition
-                    + "   "
-                    + cylinder.transform.localScale.y
-            );
 
             cylinderScale = new Vector3(1, newCylinderLength, 1);
             cylinder.transform.localScale = cylinderScale;

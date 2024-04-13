@@ -14,8 +14,6 @@ public class CylinderProperty : MonoBehaviour
         gameObject.GetComponent<Renderer>().material = cylinderMaterials[
             Random.Range(0, cylinderMaterials.Length)
         ];
-
-
     }
 
     // Update is called once per frame
